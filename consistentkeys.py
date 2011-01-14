@@ -3,6 +3,11 @@
 from hashring import HashRing
 import sys
 
+try:
+    import numpy
+except ImportError:
+    numpy = None
+
 ring = None
 nodes = {}
 
@@ -41,3 +46,7 @@ if __name__ == '__main__':
 
     for node, num_keys in nodes.iteritems():
         print "%s: %d" % (node, num_keys)
+
+    if numpy:
+        a = numpy.array(nodes.values())
+        print "variance: %f, stddev: %f" % (a.var(), a.std())
