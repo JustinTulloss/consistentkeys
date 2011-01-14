@@ -1,3 +1,8 @@
+"""
+Originally written by Amir Salihefendic
+http://amix.dk/blog/viewEntry/19367
+"""
+
 import hashlib
 
 class HashRing(object):
