@@ -1,4 +1,4 @@
-import md5
+import hashlib
 
 class HashRing(object):
 
@@ -85,7 +85,7 @@ class HashRing(object):
 
         md5 is currently used because it mixes well.
         """
-        m = md5.new()
+        m = hashlib.md5()
         m.update(key)
         return long(m.hexdigest(), 16)
 
