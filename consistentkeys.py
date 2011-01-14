@@ -23,6 +23,14 @@ def distribute_keys(keys):
     for key in keys:
         nodes[ring.get_node(key)] += 1
 
+def print_results():
+    for node, num_keys in nodes.iteritems():
+        print "%s: %d" % (node, num_keys)
+
+    if numpy:
+        a = numpy.array(nodes.values())
+        print "variance: %f, stddev: %f" % (a.var(), a.std())
+
 def usage():
     print """usage: %s <path to keys> <path to hosts> <number of replicas>
 
@@ -43,10 +51,5 @@ if __name__ == '__main__':
 
     create_ring(replicas)
     distribute_keys(keys)
+    print_results()
 
-    for node, num_keys in nodes.iteritems():
-        print "%s: %d" % (node, num_keys)
-
-    if numpy:
-        a = numpy.array(nodes.values())
-        print "variance: %f, stddev: %f" % (a.var(), a.std())
